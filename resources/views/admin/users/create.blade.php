@@ -12,10 +12,10 @@
                     <form method="POST" action="{{ route("admin.users.store") }}" enctype="multipart/form-data">
                         @csrf
                         <div class="form-group {{ $errors->has('name') ? 'has-error' : '' }}">
-                            <label class="required" for="name">{{ trans('cruds.user.fields.name') }}</label>
+                            <label class="required" for="name">User{{ trans('cruds.user.fields.name') }}</label>
                             <input class="form-control" type="text" name="name" id="name" value="{{ old('name', '') }}" required>
                             @if($errors->has('name'))
-                                <span class="help-block" role="alert">{{ $errors->first('name') }}</span>
+                            <span class="help-block" role="alert">{{ $errors->first('name') }}</span>
                             @endif
                             <span class="help-block">{{ trans('cruds.user.fields.name_helper') }}</span>
                         </div>
@@ -23,7 +23,7 @@
                             <label class="required" for="email">{{ trans('cruds.user.fields.email') }}</label>
                             <input class="form-control" type="email" name="email" id="email" value="{{ old('email') }}" required>
                             @if($errors->has('email'))
-                                <span class="help-block" role="alert">{{ $errors->first('email') }}</span>
+                            <span class="help-block" role="alert">{{ $errors->first('email') }}</span>
                             @endif
                             <span class="help-block">{{ trans('cruds.user.fields.email_helper') }}</span>
                         </div>
@@ -31,7 +31,7 @@
                             <label class="required" for="password">{{ trans('cruds.user.fields.password') }}</label>
                             <input class="form-control" type="password" name="password" id="password" required>
                             @if($errors->has('password'))
-                                <span class="help-block" role="alert">{{ $errors->first('password') }}</span>
+                            <span class="help-block" role="alert">{{ $errors->first('password') }}</span>
                             @endif
                             <span class="help-block">{{ trans('cruds.user.fields.password_helper') }}</span>
                         </div>
@@ -43,11 +43,11 @@
                             </div>
                             <select class="form-control select2" name="roles[]" id="roles" multiple required>
                                 @foreach($roles as $id => $role)
-                                    <option value="{{ $id }}" {{ in_array($id, old('roles', [])) ? 'selected' : '' }}>{{ $role }}</option>
+                                <option value="{{ $id }}" {{ in_array($id, old('roles', [])) ? 'selected' : '' }}>{{ $role }}</option>
                                 @endforeach
                             </select>
                             @if($errors->has('roles'))
-                                <span class="help-block" role="alert">{{ $errors->first('roles') }}</span>
+                            <span class="help-block" role="alert">{{ $errors->first('roles') }}</span>
                             @endif
                             <span class="help-block">{{ trans('cruds.user.fields.roles_helper') }}</span>
                         </div>

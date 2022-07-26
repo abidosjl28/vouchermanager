@@ -12,30 +12,31 @@
         </p>
 
         @if(session('message'))
-            <p class="alert alert-info">
-                {{ session('message') }}
-            </p>
+        <p class="alert alert-info">
+            {{ session('message') }}
+        </p>
         @endif
 
         <form method="POST" action="{{ route('login') }}">
             @csrf
 
-            <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-                <input id="email" type="email" name="email" class="form-control" required autocomplete="email" autofocus placeholder="{{ trans('global.login_email') }}" value="{{ old('email', null) }}">
+            <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
 
-                @if($errors->has('email'))
-                    <p class="help-block">
-                        {{ $errors->first('email') }}
-                    </p>
+                <input id="name" type="name" name="name" class="form-control" required autocomplete="name" autofocus placeholder="User{{ trans('global.user_name') }}" value="{{ old('name', null) }}">
+
+                @if($errors->has('name'))
+                <p class="help-block">
+                    {{ $errors->first('name') }}
+                </p>
                 @endif
             </div>
             <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
                 <input id="password" type="password" name="password" class="form-control" required placeholder="{{ trans('global.login_password') }}">
 
                 @if($errors->has('password'))
-                    <p class="help-block">
-                        {{ $errors->first('password') }}
-                    </p>
+                <p class="help-block">
+                    {{ $errors->first('password') }}
+                </p>
                 @endif
             </div>
             <div class="row">
@@ -53,9 +54,9 @@
         </form>
 
         @if(Route::has('password.request'))
-            <a href="{{ route('password.request') }}">
-                {{ trans('global.forgot_password') }}
-            </a><br>
+        <a href="{{ route('password.request') }}">
+            {{ trans('global.forgot_password') }}
+        </a><br>
         @endif
 
 
@@ -65,12 +66,12 @@
 
 @section('scripts')
 <script>
-    $(function () {
-    $('input').iCheck({
-      checkboxClass: 'icheckbox_square-blue',
-      radioClass: 'iradio_square-blue',
-      increaseArea: '20%' /* optional */
+    $(function() {
+        $('input').iCheck({
+            checkboxClass: 'icheckbox_square-blue',
+            radioClass: 'iradio_square-blue',
+            increaseArea: '20%' /* optional */
+        });
     });
-  });
 </script>
 @endsection
